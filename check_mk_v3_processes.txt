@@ -1,0 +1,6 @@
+notepad
+check_mk_agent*
+find*
+git*
+*ssh*
+scp*

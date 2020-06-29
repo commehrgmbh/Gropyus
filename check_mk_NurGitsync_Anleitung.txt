@@ -1,0 +1,16 @@
+-check_mk_Nur_Gitsync.exe in C:\check_mk\<hostgroup> legen
+-Parameter.txt muss weiterhin in C:\check_mk liegen
+-Datei führt einzig einen Git-pull durch in den bestehenden Hostgroup-Unterordner
+
+=> Falls Hostgroup-Unterordner defekt, dann neuen Git-Init durchführen:
+ -Hostgroup-Unterordner löschen: 		rd c:\check_mk\<hostgroup>\ /S /Q
+ -neuen Hostgroup-Unterordner anlegen:	md c:\check_mk\<hostgroup>\
+ -in neuen Ordner wechseln:				cd c:\check_mk\<hostgroup>
+ -diesen neuen als Repo initialisieren:	git init
+ -GitHub-Repo runtersynchronisieren: 	git pull https://commehrgmbhread:casd3sadASF@github.com/commehrgmbh/<hostgroup>.git
+
+-C:\check_mk\Parameter.txt muss wie bekannt vorhanden sein, damit dem Script der Repo-Name bekannt ist
+-Datei "check_mk_Nur_Gitsync.exe" kann nun in der Aufgabenplanung zum GitSync bei aktiv überwachten Host eingesetzt werden
+
+-Datei "check_mk_v3_processes.txt" nimmt zeilenweise Prozessnamen auf, die mit Taskkill gestoppt werden (werden von check_mk_Nur_Gitsync.exe übernommen)
+-Datei "check_mk_v3_user_deakt.txt" enthält den Nutzernamen, auf den der Taskkill wirken soll (wird von check_mk_Nur_Gitsync.exe übernommen)
